@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brandilyst — We build simple things well</title>
+  <meta name="description" content="Sample company page template: hero, about, services, testimonials, team, pricing, and contact — all in one file." />
+  <style>
+    :root{
+      --bg:#0f1222; --card:#151937; --ink:#e9eef6; --muted:#a7b0c3; --accent:#7aa2ff; --accent-2:#49e1c7; --border:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; background:radial-gradient(1200px 800px at 90% -10%, #1b2351 0%, transparent 60%), var(--bg); color:var(--ink)}
+    a{color:var(--accent)}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(6px); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{width:34px; height:34px; border-radius:8px; display:grid; place-items:center; background:linear-gradient(135deg,#3b50ff,#00d0b3); color:white; font-weight:700}
+    .nav a{color:var(--ink); text-decoration:none; font-weight:600; opacity:.9}
+    .nav-links{display:flex; gap:14px}
+
+    /* Hero */
+    .hero{padding:56px 0 28px}
+    .hero h1{font-size:clamp(28px,5vw,44px); line-height:1.15; margin:10px 0}
+    .hero p{font-size:clamp(16px,2.4vw,18px); color:var(--muted); max-width:720px}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .btn{appearance:none; padding:12px 16px; border-radius:12px; border:1px solid var(--border); cursor:pointer; background:linear-gradient(180deg,#495fff,#3e53d6); color:white; font-weight:600}
+    .btn.alt{background:transparent}
+
+    /* Sections */
+    section{padding:36px 0}
+    h2{font-size:clamp(20px,3.2vw,28px); margin:0 0 12px}
+    h3{font-size:18px; margin:12px 0 6px}
+    .grid{display:grid; gap:16px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid var(--border); border-radius:16px; padding:16px}
+    .muted{color:var(--muted)}
+    @media (max-width: 900px){ .cards{grid-template-columns:1fr 1fr} }
+    @media (max-width: 640px){ .cards{grid-template-columns:1fr} }
+
+    /* Testimonials */
+    .quote{font-style:italic}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted); font-size:14px}
+    .foot{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+
+
+    [id^="n8n-chat"],
+        .n8n-chat,
+        #n8n-chat,
+        #n8n-chat-container,
+        #n8n-chat-floating-button {
+            position: fixed !important;
+            z-index: 2147483647 !important;
+            pointer-events: auto;
+        }
+
+        #n8n-chat .chat-window {
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25) !important;
+            border-radius: 1.25rem !important;
+            overflow: hidden;
+        }
+
+        /*i want to change the clr of cheat header to golden*/
+        #n8n-chat .chat-header {
+            color: #fdfdfd !important;
+            background-color: #000 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 15px 20px !important;
+        }
+        
+        /* Add logo to chat header */
+        #n8n-chat .chat-header::before {
+            content: ""; display: inline-block; width: 110px; height: 30px;
+            background-image: url("logo.png"); 
+            background-size: contain; 
+            background-repeat: no-repeat; background-position: center;flex-shrink: 0; align-self: flex-start !important; margin-bottom: 5px !important;
+        }
+        
+ 
+        #n8n-chat .chat-header .chat-heading {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+        }
+           
+        #n8n-chat .chat-header p{
+            font-size: 0.7em;
+            color: #ffffff;
+        }
+
+
+        #n8n-chat .chat-header h1{
+            font-size: 1.5em;
+            color: #e2e3ea;
+          /*display: none !important;*/
+        }
+        
+        /* Make inner chat panel fill wrapper and stick to the right edge */
+        #n8n-chat .chat-window {
+            width: 100% !important;
+            margin: 0 0 0 auto !important; /* no gap on right */
+            box-sizing: border-box !important;
+            border-color: #000;
+        }
+        
+        #n8n-chat .chat-window-wrapper {
+            position: fixed !important;
+            bottom: 90px !important;
+            right: 20px !important;       
+            z-index: 9998 !important;
+            width: 330px;
+            height: 450px;
+            resize: both !important;       
+            overflow: hidden !important;
+            min-width: 280px !important;
+            min-height: 400px !important;
+            max-width: 100vw !important;
+            max-height: calc(100vh - 100px) !important;
+            border-radius: 15px !important;
+          } 
+          
+          /* Toggle button fixed at bottom */
+          #n8n-chat .chat-window-toggle {
+            position: fixed !important;
+            bottom: 20px !important;   
+            right: 20px !important;
+            z-index: 9999 !important;
+          
+            background: #151937 !important;  
+            border-radius: 50% !important;
+            padding: 8px !important;
+            width: 48px !important;      /* prevent stretching */
+            height: 48px !important;     /* prevent stretching */
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+          }
+        
+            /* Bot message bubble */
+         #n8n-chat .chat-message-from-bot {
+                background: #222 !important;
+                color: #ffffff !important;
+                align-self: flex-start !important;     
+                padding: 10px 12px !important;
+                border-radius: 10px !important;   
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+                animation: fadeInMessage 0.3s ease !important;
+               
+            }
+            
+            /* User message bubble (right side, green, rectangular) */
+            #n8n-chat .chat-message-from-user {
+                background: #63b5f8 !important;   
+                color: #222 !important;
+                align-self: flex-end !important;
+                width: fit-content !important;   
+                max-width: 70% !important;       
+                margin-left: auto !important;  
+                padding: 10px 12px !important;
+                border-radius: 10px !important;   
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+                animation: fadeInMessage 0.3s ease !important;
+                 
+            }
+
+            /* Make input placeholder smaller */
+            #n8n-chat .chat-input textarea::placeholder {
+                font-size: 13px !important;   
+                color: #888 !important;  
+                padding-top: 2px !important;     
+            }
+
+            /* User typing text (inside input box) */
+            #n8n-chat .chat-input textarea {
+                font-size: 15px !important;  
+                line-height: 1.5 !important;
+                color: #000 !important;       
+            }
+            
+            
+            /* Send arrow (button icon) color green */
+            #n8n-chat .chat-input-send-button svg {
+                fill: #151937 !important;    
+                color: #63b5f8 !important;
+            }
+            
+
+            /* Bot message text */
+            #n8n-chat .chat-message-from-bot,
+            #n8n-chat .chat-message-from-bot p,
+            #n8n-chat .chat-message-from-bot span,
+            #n8n-chat .chat-message-from-bot .chat-message-markdown {
+            color: #ffffff !important;  
+            font-size: 13px !important;
+            }
+
+            /* User message text */
+            #n8n-chat .chat-message-from-user,
+            #n8n-chat .chat-message-from-user p,
+            #n8n-chat .chat-message-from-user span,
+            #n8n-chat .chat-message-from-user .chat-message-markdown {
+            color: #000 !important; 
+            font-size: 13px !important;  
+            }
+
+          /* Add custom footer text below input */
+            #n8n-chat .chat-input::after {
+                content: "Powered by Brandilyst";
+                display: block;
+                text-align: center;
+                font-size: 11px;
+                color: #000; /* Black text */
+                padding-top: 6px;
+                padding-bottom: 8px; /* Extra space below */
+            }
+
+
+  </style>
+<!-- n8n Chat Widget CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- <div class="logo" aria-hidden="true">∑</div> -->
+        <strong>Brandilyst</strong>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>We build simple things well</h1>
+        <p>Acme Co is a sample company page template. Swap text, drop your logo, and you have a clean, responsive landing page with no external libraries or scripts.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Get a quote</a>
+          <a class="btn alt" href="#work">See our work</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About</h2>
+        <p class="muted">We’re a small team focused on practical, high‑quality web experiences. This is placeholder copy you can replace with your own mission and values.</p>
+        <div class="cards">
+          <div class="card"><h3>Principles</h3><p class="muted">Clarity, reliability, and thoughtful details in everything we ship.</p></div>
+          <div class="card"><h3>Approach</h3><p class="muted">Start simple, iterate quickly, and measure what matters.</p></div>
+          <div class="card"><h3>Impact</h3><p class="muted">We make products people enjoy using — and keep using.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>Services</h2>
+        <div class="cards">
+          <div class="card"><h3>Design</h3><p class="muted">Branding, UI/UX, and design systems.</p></div>
+          <div class="card"><h3>Development</h3><p class="muted">Web apps, websites, and integrations.</p></div>
+          <div class="card"><h3>Advisory</h3><p class="muted">Roadmapping, audits, and workshops.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2>Selected Work</h2>
+        <div class="cards">
+          <div class="card"><h3>Project One</h3><p class="muted">Short description of what you built and the outcome.</p></div>
+          <div class="card"><h3>Project Two</h3><p class="muted">Highlights, metrics, or client testimonial snippet.</p></div>
+          <div class="card"><h3>Project Three</h3><p class="muted">Technologies used and the business result.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <div class="cards">
+          <div class="card"><p class="quote">“They kept things simple and delivered on time.”</p><p class="muted">— Happy Client</p></div>
+          <div class="card"><p class="quote">“Clean design and a smooth process.”</p><p class="muted">— Product Lead</p></div>
+          <div class="card"><p class="quote">“Would absolutely work with them again.”</p><p class="muted">— Founder</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <h2>Team</h2>
+        <div class="cards">
+          <div class="card"><h3>Alex Smith</h3><p class="muted">Founder & Engineer</p></div>
+          <div class="card"><h3>Jamie Lee</h3><p class="muted">Designer</p></div>
+          <div class="card"><h3>Pat Johnson</h3><p class="muted">Project Manager</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <h2>Pricing</h2>
+        <div class="cards">
+          <div class="card"><h3>Starter</h3><p class="muted">From $1,500</p></div>
+          <div class="card"><h3>Growth</h3><p class="muted">From $5,000</p></div>
+          <div class="card"><h3>Custom</h3><p class="muted">Let’s scope it together</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="muted">Email <a href="mailto:hello@example.com">hello@example.com</a> or call <a href="tel:+123456789">+1 (234) 567‑89</a>. Replace these with your real details.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> Acme Co</div>
+      <div class="muted">Privacy • Terms</div>
+    </div>
+  </footer>
+
+
+  <!-- n8n Chat Widget Script -->
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        webhookUrl: "https://brandilyst-ug.app.n8n.cloud/webhook/multi-agent-orchestrator/chat",
+        target: "#n8n-chat",
+        mode: "window",
+        loadPreviousSession: true,
+        metadata: {},
+        showWelcomeScreen: false,
+        defaultLanguage: "en",
+        initialMessages: [
+          "Hallo! 👋",
+          "Ich bin Karl. Ich kann Ihnen sowohl auf Deutsch als auch auf Englisch helfen."
+        ],
+        i18n: {
+          en: {
+            title:"Orchestrated Workfow Chatbot.",
+            subtitle: "This is Hybrid Query Testing Chatbot.",
+            footer: "",
+            getStarted: "New Conversation",
+            inputPlaceholder: "Type your question..",
+          },
+        },
+        enableStreaming: false,
+      });
+
+    
+</script>
+
+
+</body>
+
+</html>
+
+
+
+
